@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <h1 class="text-center">Bem vindo ao Conatooh</h1>
+</div>
+
+<p ng-show="message.text">
+  {{message.text}}
+</p>
+
+<a ng-href="#/contact" class="btn btn-primary">Novo Contato</a>
+<input type="search" placeholder="parte do nome" ng-model="filter">
+<p ng-show="contacts.length">
+  Contatos cadastrados: {{contacts.length}}
+</p>
+<p class="text-info" ng-hide="contacts.length">
+  Não há contatos cadastrados
+</p>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Emergência</th>
+      <th class="text-center">Ação</th>
+    </tr>
+    <tr ng-repeat="contact in contacts | filter: filter">
+      <td><a ng-href="#/contact/{{contact._id}}">{{contact.name}}</a></td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.emergency.name}}</td>
+      <td class="text-center">
+        <button class="btn btn-warning" ng-click="remove(contact)">Remover</button>
+      </td>
+    </tr>
+  </table>
+</div>
