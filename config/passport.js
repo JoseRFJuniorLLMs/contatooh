@@ -16,7 +16,7 @@ module.exports = function() {
 
 		User.findOrCreate(
 			{ "login" : profile.username },
-			{ "nome" : profile.username },
+			{ "name" : profile.username },
 			function(error, user) {
 				if (error) {
 					return done(error);
