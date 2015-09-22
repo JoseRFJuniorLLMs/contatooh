@@ -1,32 +1,52 @@
 module.exports = function(grunt) {
-  grunt.initConfig({
 
-    usemin : {
-      html: 'app/views/**/*.ejs'
+  grunt.initConfig({
+    copy: {
+      project: {
+        expand: true,
+        cwd: '.',
+        src: ['**', '!Gruntfile.js', '!package.json', '!public/bower.json'],
+        dest: 'dist'
+      }
+    },
+
+    clean: {
+      dist: {
+        src: 'dist'
+      }
+    },
+
+    usemin: {
+      html: 'dist/app/views/**/*.ejs'
     },
 
     useminPrepare: {
       options: {
-        root: 'public',
-        dest: 'public'
+        root: 'dist/public',
+        dest: 'dist/public'
       },
-      html: 'app/views/**/*.ejs'
+      html: 'dist/app/views/**/*.ejs'
     },
 
     ngAnnotate: {
-        scripts: {
-            expand: true,
-            src: ['public/js/**/*.js']
-        },
+      scripts: {
+        expand: true,
+        src: ['dist/public/js/**/*.js']
+      }
     }
   });
 
-  grunt.registerTask('minify', ['useminPrepare', 'ngAnnotate', 'concat', 
-  'uglify', 'cssmin', 'usemin']);
+  grunt.registerTask('default', ['dist', 'minify']);
+  grunt.registerTask('dist', ['clean', 'copy']);
+  grunt.registerTask('minify', ['useminPrepare', 'ngAnnotate',
+    'concat', 'uglify', 'cssmin', 'usemin']);
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-ng-annotate');
+
 };
