@@ -2,7 +2,7 @@ var config = require('./config')();
 
 exports.config = {
   sauceUser: config.sauceUser,
-  sauceKey: cofnig.sauceKey,
+  sauceKey: config.sauceKey,
   capabilities: {
     'name': config.sauceTestName,
     'browserName': 'chrome',
@@ -10,6 +10,7 @@ exports.config = {
     'build': config.travisBuild
   },
   specs: ['../test/e2e/**/*.js'],
+  chromeOnly: true,
   onPrepare: function() {
       browser.driver.get('http://localhost:3000/');
       browser.driver.findElement(by.id('githubLogin')).click();
