@@ -1,8 +1,8 @@
 language: node_js
-notifications:
-  - email: lucascc@gmail.com
 node_js:
   - 0.10
+notifications:
+  - email: lucascc@gmail.com
 services:
   - mongodb
 env:
@@ -19,9 +19,9 @@ before_install:
   - bower install
 before_script:
   - node test/data.js
-  - grunt
-  - cd dist
+  - grunt minify
+  - node server &
+  - sleep 10
 script:
   - karma start config/karma.config.js --single-run --browsers PhantomJS
-  - node server &
   - protractor config/protractor.js
