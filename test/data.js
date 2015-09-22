@@ -7,8 +7,8 @@ var contacts = [
 ];
 
 MongoClient.connect('mongodb://127.0.0.1:27017/contatooh_test',
-  function(err, db) {
-    if (err) {
+  function(error, db) {
+    if (error) {
       throw err;
     }
 
@@ -19,7 +19,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/contatooh_test',
       console.log('Test database has been dropped');
 
       db.collection('contacts').insert(contacts,
-      function(error, inserted) {
+      function(err, inserted) {
         if (err) {
           return console.log(err);
         }
