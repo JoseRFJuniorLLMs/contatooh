@@ -10,7 +10,7 @@ exports.config = {
     'build': config.travisBuild
   },
   specs: ['../test/e2e/**/*.js'],
-  chromeOnly: true,
+  directConnect: true,
   onPrepare: function() {
       browser.driver.get('http://localhost:3000/');
       browser.driver.findElement(by.id('githubLogin')).click();
