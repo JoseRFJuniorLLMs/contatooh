@@ -19,7 +19,7 @@ before_install:
   - bower install
 before_script:
   - node test/data.js
-  - grunt minify
+  - grunt
   - node server &
   - sleep 10
 script:
