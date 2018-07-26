@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/lucascc26/contatooh.svg?branch=master)](https://travis-ci.org/lucascc26/contatooh)
+[![Build Status](https://travis-ci.org/lucascc26/contatooh.svg?branch=master)](https://travis-ci.org/lucascc26/contatooh) [![Greenkeeper badge](https://badges.greenkeeper.io/DevJoseWeb/contatooh.svg)](https://greenkeeper.io/)
